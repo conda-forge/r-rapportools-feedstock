@@ -16,7 +16,7 @@ source:
 
 build:
   noarch: generic
-  number: 1000
+  number: 1001
   rpaths:
     - lib/R/lib/
     - lib/
@@ -48,8 +48,4 @@ about:
 
 extra:
   recipe-maintainers:
-    - cbrueffer
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
+    - conda-forge/r
