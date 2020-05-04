@@ -1,4 +1,4 @@
-{% set version = '1.0' %}
+{% set version = "1.0" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -16,7 +16,7 @@ source:
 
 build:
   noarch: generic
-  number: 1001
+  number: 1002
   rpaths:
     - lib/R/lib/
     - lib/
@@ -41,11 +41,12 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=rapportools
-  license: AGPL-3
-  summary: Helper functions that act as wrappers to more advanced statistical methods with the
-    advantage of having sane defaults for quick reporting.
+  license: AGPL-3.0-only
+  summary: Helper functions that act as wrappers to more advanced statistical methods with the advantage of having sane defaults for quick reporting.
   license_family: AGPL
 
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/AGPL-3
 extra:
   recipe-maintainers:
     - conda-forge/r
