@@ -6,6 +6,12 @@ package:
   name: r-rapportools
   version: {{ version|replace("-", "_") }}
 
+source:
+  url:
+    - {{ cran_mirror }}/src/contrib/rapportools_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/rapportools/rapportools_{{ version }}.tar.gz
+  sha256: b5fab34bed484d20bb6cf27028f3d9009c482b079298d31a344f84675b342863
+
 build:
   merge_build_host: True  # [win]
   number: 0
