@@ -1,5 +1,4 @@
-{% set version = "1.0" %}
-
+{% set version = "1.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,35 +7,39 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: rapportools_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/rapportools_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/rapportools/rapportools_{{ version }}.tar.gz
-  sha256: 2b80267625a92b8f7375306203de6fe36b39871183b502b312219e719826fbe9
+    - {{ cran_mirror }}/src/contrib/rapportools_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/rapportools/rapportools_{{ version }}.tar.gz
+  sha256: b5fab34bed484d20bb6cf27028f3d9009c482b079298d31a344f84675b342863
 
 build:
+  merge_build_host: True  # [win]
+  number: 0
   noarch: generic
-  number: 1002
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+  host:
     - r-base
+    - r-mass
     - r-pander
     - r-plyr
-    - r-reshape
-
+    - r-reshape2
   run:
     - r-base
+    - r-mass
     - r-pander
     - r-plyr
-    - r-reshape
+    - r-reshape2
 
 test:
   commands:
-    - $R -e "library('rapportools')"  # [not win]
+    - $R -e "library('rapportools')"           # [not win]
     - "\"%R%\" -e \"library('rapportools')\""  # [win]
 
 about:
@@ -44,9 +47,9 @@ about:
   license: AGPL-3.0-only
   summary: Helper functions that act as wrappers to more advanced statistical methods with the advantage of having sane defaults for quick reporting.
   license_family: AGPL
-
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/AGPL-3
+
 extra:
   recipe-maintainers:
     - conda-forge/r
