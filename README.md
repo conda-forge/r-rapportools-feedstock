@@ -1,11 +1,11 @@
-About r-rapportools
-===================
+About r-rapportools-feedstock
+=============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rapportools-feedstock/blob/main/LICENSE.txt)
 
 Home: https://CRAN.R-project.org/package=rapportools
 
 Package license: AGPL-3.0-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rapportools-feedstock/blob/main/LICENSE.txt)
 
 Summary: Helper functions that act as wrappers to more advanced statistical methods with the advantage of having sane defaults for quick reporting.
 
